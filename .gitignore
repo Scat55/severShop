@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+.prettierrc.json
 
 /cypress/videos/
 /cypress/screenshots/
