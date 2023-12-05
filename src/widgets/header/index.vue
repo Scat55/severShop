@@ -7,7 +7,7 @@ import { Field } from '@/shared/field';
 import { Typography } from '@/shared/typography';
 
 const onChangeSearch = (value: string) => console.log(value);
-const onSearch = (value: string) => console.log(value);
+const onSearch = () => console.log('SEND TO SERVER');
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const onSearch = (value: string) => console.log(value);
         <Field
           placeholder="Найти товар"
           :onChange="onChangeSearch"
-          :onEnter="onSearch"
+          :onSubmit="onSearch"
         >
           <template #rightIcon>
             <svg

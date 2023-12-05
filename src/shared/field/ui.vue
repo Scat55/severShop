@@ -3,7 +3,7 @@ import { useSlots } from 'vue';
 
 interface Props {
   onChange: () => string;
-  onEnter: () => string;
+  onSubmit: () => void;
   disabled?: boolean;
   size?: 'm' | 'l';
   placeholder?: string;
@@ -32,18 +32,18 @@ const {
   >
     <slot name="label"></slot>
     <div class="field__container">
-      <div v-if="slots.leftIcon" class="field__leftIcon">
+      <div v-if="slots.leftIcon" class="field__leftIcon" @click="onSubmit">
         <slot name="leftIcon"></slot>
       </div>
       <input
         @input="(input) => onChange(input.target.value)"
-        @keyup.enter="(input) => onEnter(input.target.value)"
+        @keyup.enter="(input) => onSubmit"
         type="text"
         class="field__input"
         :placeholder="placeholder"
         :disabled="disabled"
       />
-      <div v-if="slots.rightIcon" class="field__rightIcon">
+      <div v-if="slots.rightIcon" class="field__rightIcon" @click="onSubmit">
         <slot name="rightIcon"></slot>
       </div>
     </div>
@@ -84,9 +84,11 @@ const {
 
   &__leftIcon {
     position: absolute;
+    cursor: pointer;
   }
   &__rightIcon {
     position: absolute;
+    cursor: pointer;
   }
 
   &.size_m &__input {
