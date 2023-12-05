@@ -1,18 +1,15 @@
 <script setup lang="ts">
 interface Props {
-  tagName: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
-  bold?: boolean
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl'
+  tagName: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+  bold?: boolean;
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl';
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 </script>
 
 <template>
-  <component
-    :is="tagName"
-    :class="['typography', size ? `size_${size}` : '', bold ? 'bold' : '', `tag_${tagName}`]"
-  >
+  <component :is="tagName" :class="['typography', size ? `size_${size}` : '', bold ? 'bold' : '', `tag_${tagName}`]">
     <slot> </slot>
   </component>
 </template>

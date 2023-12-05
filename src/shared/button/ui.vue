@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Typography from '@/shared/typography/index.vue';
+import { Typography } from '../typography/';
 
 interface Props {
   color?: 'primary' | 'secondary' | 'grayscale' | 'error';
