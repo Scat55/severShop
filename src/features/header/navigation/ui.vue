@@ -14,12 +14,24 @@ const { data } = defineProps<Props>();
 
 <template>
   <nav>
-    <ul v-for="item in data" :key="item.label">
-      <li>
+    <ul>
+      <li v-for="item in data" :key="item.label">
         <RouterLink :to="item.link">{{ item.label }}</RouterLink>
       </li>
     </ul>
   </nav>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+ul {
+  display: flex;
+  gap: 0.625rem;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+</style>
