@@ -17,11 +17,11 @@ const { data } = defineProps<Props>();
 
 <template>
   <div class="user-menu">
-    <Avatar :img="data.avatar" />
-    <Typography tagName="span" size="s">
+    <Avatar class="user-menu__avatar" :img="data.avatar" />
+    <Typography class="user-menu__name" tagName="span" size="s">
       {{ data.name }}
     </Typography>
-    <Button decoration="none" size="M">
+    <Button class="user-menu__button" decoration="none" size="M">
       <template v-slot:leftIcon>
         <Icon type="chevron" />
       </template>
@@ -36,6 +36,11 @@ const { data } = defineProps<Props>();
   gap: 10px;
   align-items: center;
   padding: 8px;
-  cursor: pointer;
+
+  &__name,
+  &__avatar,
+  &__button {
+    cursor: pointer;
+  }
 }
 </style>
