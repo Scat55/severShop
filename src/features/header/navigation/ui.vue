@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { Typography } from '@/shared/typography';
+import { Icon } from '@/shared/icon';
 
 interface Props {
   data: {
@@ -13,25 +15,48 @@ const { data } = defineProps<Props>();
 </script>
 
 <template>
-  <nav>
-    <ul>
-      <li v-for="item in data" :key="item.label">
-        <RouterLink :to="item.link">{{ item.label }}</RouterLink>
+  <nav class="header__navigation">
+    <ul class="header__navigation__list">
+      <li v-for="item in data" :key="item.label" class="list__item">
+        <RouterLink :to="item.link" class="item">
+          <Icon :type="item.icon" />
+          <Typography tagName="span" size="xs">
+            {{ item.label }}
+          </Typography>
+          <span v-if="item.count > 0" class="item__count">{{ item.count }}</span>
+        </RouterLink>
       </li>
     </ul>
   </nav>
 </template>
 
 <style scoped lang="scss">
-ul {
+.header {
+  &__navigation {
+    &__list {
+      display: flex;
+      grid-gap: 24px;
+    }
+  }
+}
+.item {
+  position: relative;
   display: flex;
-  gap: 0.625rem;
-}
-li {
-  list-style: none;
-}
-a {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 8px;
   text-decoration: none;
-  color: black;
+  color: var(--main-on-surface);
+
+  &__count {
+    position: absolute;
+    top: -6px;
+    right: 6px;
+    padding: 2px 4px;
+    background-color: var(--main-primary);
+    color: var(--main-on-primary);
+    border-radius: 4px;
+  }
 }
 </style>
