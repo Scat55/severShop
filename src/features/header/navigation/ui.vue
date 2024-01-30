@@ -57,6 +57,7 @@ const { data } = defineProps<Props>();
     background-color: var(--main-primary);
     color: var(--main-on-primary);
     border-radius: 4px;
+    font-size: 12px;
   }
 }
 </style>
