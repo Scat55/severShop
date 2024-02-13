@@ -6,6 +6,11 @@
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
 }
-ul, ol {
+ul,
+ol {
   list-style: none;
+}
+a {
+  text-decoration: none;
+  color: unset;
 }

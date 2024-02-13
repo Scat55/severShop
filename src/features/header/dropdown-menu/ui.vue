@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { Container } from '@/shared/container';
+import { RouterLink } from 'vue-router';
+import { Typography } from '@/shared/typography';
 </script>
 
 <template>
   <div class="dropdown-menu">
     <Container>
       <ul class="dropdown-menu__list">
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
-        <li class="list__item">test</li>
+        <li class="list__item">
+          <RouterLink to="/">
+            <Typography tag-name="span" size="s" :bold="true" class="item__text">Test</Typography>
+          </RouterLink>
+        </li>
       </ul>
     </Container>
   </div>
