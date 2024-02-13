@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { Container } from '@/shared/container';
 import { Logo } from '@/shared/logo';
 import { Button } from '@/shared/button';
 import { Icon } from '@/shared/icon';
 import { Field } from '@/shared/field';
+
 import { Navigation } from '@/features/header/navigation';
 import { UserMenu } from '@/features/header/user-menu';
+import { dropDownMenu } from '@/features/header/dropdown-menu';
+
 import avatarIMG from '@/assets/avatar.png';
 
 const navItems = reactive([
@@ -18,11 +21,24 @@ const navItems = reactive([
 const userMenu = reactive({
   avatar: avatarIMG,
   name: 'Алексей',
-  menu: [],
+  menu: [
+    {
+      label: 'Профиль',
+      link: 'profile',
+    },
+    {
+      label: 'Выйти',
+      action: 'logout',
+    },
+  ],
 });
+
+const dropDownIsHidden = ref<boolean>(true);
 
 const onChangeSearch = (value: string) => console.log(value);
 const onSearch = () => console.log('SEND TO SERVER');
+
+const toggleDropdownVisibility = () => (dropDownIsHidden.value = !dropDownIsHidden.value);
 </script>
 
 <template>
@@ -32,10 +48,13 @@ const onSearch = () => console.log('SEND TO SERVER');
         <Logo orientation="horizontal" bgColor="white" colorFull withText />
 
         <div class="header__catalog">
-          <Button color="secondary">
+          <Button color="secondary" @mouseenter="toggleDropdownVisibility">
             <template v-slot:leftIcon><Icon type="menu" /></template>
             Каталог
           </Button>
+        </div>
+        <div class="header__dropdown-menu" v-if="!dropDownIsHidden">
+          <dropDownMenu @mouseleave="toggleDropdownVisibility" />
         </div>
         <div class="header__search">
           <Field placeholder="Найти товар" :onChange="onChangeSearch" :onSubmit="onSearch">

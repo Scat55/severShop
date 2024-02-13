@@ -3,6 +3,7 @@ import { Avatar } from '@/shared/avatar';
 import { Typography } from '@/shared/typography';
 import { Button } from '@/shared/button';
 import { Icon } from '@/shared/icon';
+import { RouterLink } from 'vue-router';
 
 interface Props {
   data: {
@@ -26,6 +27,11 @@ const { data } = defineProps<Props>();
         <Icon type="chevron" />
       </template>
     </Button>
+    <ul>
+      <li v-for="item in data.menu" :key="item.label">
+        <!--        <RouterLink v-if="item.link">{{ item.label }}</RouterLink>-->
+      </li>
+    </ul>
   </div>
 </template>
 

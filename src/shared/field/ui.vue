@@ -12,12 +12,7 @@ interface Props {
 const slots = useSlots();
 
 const props = defineProps<Props>();
-const {
-  disabled = false,
-  size = 'm',
-  placeholder = '',
-  onChange = () => {}
-} = props;
+const { disabled = false, size = 'm', placeholder = '', onChange = () => {} } = props;
 </script>
 
 <template>
@@ -27,7 +22,7 @@ const {
       `disabled_${disabled}`,
       `size_${size}`,
       `left-icon_${Boolean(slots.leftIcon)}`,
-      `right-icon_${Boolean(slots.rightIcon)}`
+      `right-icon_${Boolean(slots.rightIcon)}`,
     ]"
   >
     <slot name="label"></slot>
