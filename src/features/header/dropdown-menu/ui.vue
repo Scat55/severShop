@@ -2,15 +2,21 @@
 import { Container } from '@/shared/container';
 import { RouterLink } from 'vue-router';
 import { Typography } from '@/shared/typography';
+import { useCatalogStore } from '@/entities/catalog';
+
+const catalogStore = useCatalogStore();
+const { catalogSection } = catalogStore;
 </script>
 
 <template>
   <div class="dropdown-menu">
     <Container>
       <ul class="dropdown-menu__list">
-        <li class="list__item">
-          <RouterLink to="/">
-            <Typography tag-name="span" size="s" :bold="true" class="item__text">Test</Typography>
+        <li class="list__item" v-for="catalogItems in catalogSection" :key="catalogItems.label">
+          <RouterLink :to="catalogItems.link">
+            <Typography tag-name="span" size="s" :bold="true" class="item__text">{{
+              catalogItems.label
+            }}</Typography>
           </RouterLink>
         </li>
       </ul>
@@ -33,6 +39,13 @@ import { Typography } from '@/shared/typography';
     grid-row-gap: 1.5rem;
     grid-column-gap: 2.5rem;
     padding: 2.5rem 0;
+  }
+}
+
+.item__text {
+  transition: all 0.2s;
+  &:hover {
+    color: var(--main-primary);
   }
 }
 </style>
